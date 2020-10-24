@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import WeatherApp from '~components/weatherApp/weatherApp';
 import reportWebVitals from './reportWebVitals';
 
+import "normalize.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <WeatherApp />
