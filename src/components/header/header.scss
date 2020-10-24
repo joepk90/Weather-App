@@ -5,9 +5,16 @@
     width: 100%;
     background-color: $backgroundGrey;
     position: relative;
-    padding: rem(10px) 0;
+    padding: rem(10px) 0 rem(5px);
     
+    &__top {
+        display: flex;
+        align-items: center;
+        margin-bottom: rem(15px);
+    }
+
     &__stats {
+        position: absolute;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -16,15 +23,15 @@
     }
 
     &__clock {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    &__section {
+        padding: 0 rem(5px);
     }
 
 }
