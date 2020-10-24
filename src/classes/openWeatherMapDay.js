@@ -77,12 +77,13 @@ class OpenWeatherMapDay {
 
     getDayName() {
 
-        // TODO use moment instead of Date()
-        const dateTime = new Date(this.getDateTime() * 1000)
+        const epochDate = this.getDateTime()
 
-        const dt = moment(dateTime, "YYYY-MM-DD HH:mm:ss");
+        if (epochDate === null) {
+            return '';
+        }
 
-        return dt.format('ddd');
+        return moment(epochDate * 1000).format('ddd');
 
     }
 
