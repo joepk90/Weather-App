@@ -26,7 +26,9 @@ class WeatherApp extends Component {
         const currentWeatherResponse = await getWeather();
         const weatherForecastResponse = await getForecast();
 
-        const openWeatherMapDay = new OpenWeatherMapDay(currentWeatherResponse);
+        const currentWeatherData = OpenWeatherMapDay.getForecastDayData(currentWeatherResponse)
+
+        const openWeatherMapDay = new OpenWeatherMapDay(currentWeatherData);
         const openWeatherMapUForecast = new OpenWeatherMapUtils(weatherForecastResponse)
 
         const { apiRequestCount } = this.state;

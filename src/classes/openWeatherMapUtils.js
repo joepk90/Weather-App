@@ -45,12 +45,7 @@ class OpenWeatherMapUtils {
                 return;
             }
 
-            // TODO remove this mapping (will need to remove this requirement in the class as well)
-            const data = {
-                data: forecast
-            };
-
-            let dayForecast = new OpenWeatherMapDay(data);
+            let dayForecast = new OpenWeatherMapDay(forecast);
             let dateTime = dayForecast.getDateTime();
             let temp = dayForecast.getTemperature();
 

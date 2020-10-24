@@ -3,10 +3,10 @@ import moment from 'moment';
 class OpenWeatherMapDay {
 
     constructor(data) {
-        this.data = this.getData(data);
+        this.data = data;
     }
 
-    getData(data) {
+    static getForecastDayData(data) {
 
         if (!data || !data.data) {
             return null;
