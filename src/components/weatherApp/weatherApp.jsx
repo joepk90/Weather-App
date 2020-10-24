@@ -23,14 +23,14 @@ class WeatherApp extends Component {
         this.setState(
             {
                 currentWeatherData: currentWeatherResponse,
-                weatherForecastData: openWeatherMapUForecast.getForcastData()
+                weatherForecastData: openWeatherMapUForecast.getForecastData()
             }
         );
     }
 
     render() {
 
-        const { currentWeatherData, weatherForecast } = this.state;
+        const { currentWeatherData, weatherForecastData } = this.state;
 
         return (
             <React.Fragment>
@@ -38,7 +38,7 @@ class WeatherApp extends Component {
                 <Header weather={currentWeatherData} />
 
                 <main>
-                    <ForecastList forecast={weatherForecast} />
+                    <ForecastList weatherForecast={weatherForecastData} />
                 </main>
 
             </React.Fragment>

@@ -5,15 +5,20 @@ import Temperature from "~components/temperature/temperature";
 import "~components/forecastCard/forecastCard.scss";
 
 class ForecastCard extends Component {
+
     state = {}
+
     render() {
+
+        const { forecast } = this.props;
+
         return (
             <div className="forecast-card">
 
                 <div className="forecast-card__day h2-font-size text-uppercase">Mon</div>
 
                 <div className="forecast-card__temp h2-font-size text-uppercase">
-                    <Temperature />
+                    <Temperature temp={forecast.getTemperatureRounded()} />
                 </div>
 
                 <div className="forecast-card__icon">
