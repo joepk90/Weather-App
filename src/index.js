@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WeatherApp from '~components/weatherApp/weatherApp';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import "normalize.css";
@@ -8,7 +8,7 @@ import "~scss/style.scss"
 
 ReactDOM.render(
   <React.StrictMode>
-    <WeatherApp />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
