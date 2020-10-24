@@ -47,3 +47,28 @@ h1 {
     @include linkColor();
     text-decoration: none; 
   }
+
+
+  .h1-font-size {
+    font-size: $h1FontSize;
+  }
+
+  .h2-font-size {
+    font-size: $h2FontSize;
+  }
+
+  .h3-font-size {
+    font-size: $h4FontSize;
+  }
+
+  .h4-font-size {
+    font-size: $h4FontSize;
+  }
+
+  .h5-font-size {
+    font-size: $h5FontSize;
+  }
+
+  .h6-font-size {
+    font-size: $h6FontSize;
+  }
