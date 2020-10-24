@@ -1,0 +1,32 @@
+/*
+    Font Sizes
+*/
+$baseFontSize: 16px;
+
+$h1FontSize: 20px;
+$h2FontSize: 18px;
+$h3FontSize: 16px;
+$h4FontSize: 14px;
+$h5FontSize: 12px;
+$h6FontSize: 10px;
+
+$fontSizeSmall: 8px;
+$fontSizeLarge: 26px;
+
+/*
+    Font Families
+*/
+$baseFont: 'Lato', sans-serif;
+$headingFont: 'Lato', sans-serif;
+/*
+    Font Weights
+*/
+$fontWeightRegular: 400;
+$fontWeightBold: 700;
+
+
+/*
+    Link Colors
+*/
+$linkColor: $textWhite;
+$linkColorHover: $textPrimary

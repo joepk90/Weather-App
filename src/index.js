@@ -4,6 +4,7 @@ import WeatherApp from '~components/weatherApp/weatherApp';
 import reportWebVitals from './reportWebVitals';
 
 import "normalize.css";
+import "~scss/style.scss"
 
 ReactDOM.render(
   <React.StrictMode>

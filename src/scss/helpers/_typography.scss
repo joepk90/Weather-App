@@ -1,0 +1,23 @@
+%baseFont {
+    font-family: $baseFont;
+    font-weight: $fontWeightRegular;
+}
+
+%headingFont {
+    font-family: $headingFont;
+    font-weight: $fontWeightRegular;
+    line-height: 1.2;
+}
+
+%listStyleNone {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+@mixin linkColor {
+    color: $linkColor;
+    &:hover {
+        color: $linkColorHover;
+    }
+}

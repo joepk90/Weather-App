@@ -1,0 +1,48 @@
+/*
+    Whites, Greys, Blacks
+*/
+$white: #fff;
+$shuttleGrey: #616366;
+$clay: #32363f;
+$offBlack: #101012;
+$black: #000;
+
+/*
+    Colors
+*/
+$yellow: #f29c2b;
+
+/*
+    Primary Colors
+*/
+$colorPrimary: $yellow;
+
+/*
+    Text Colors
+*/
+$textWhite: $white;
+$textBlack: $black;
+
+/*
+    Text Utility Colors
+*/
+$textPrimary: $colorPrimary;
+$textBaseColor: $white;
+
+/*
+    Background Shades
+*/
+$backgroundWhite: $white;
+$backgroundLightGrey: $shuttleGrey;
+$backgroundGrey: $clay;
+$backgroundDarkGrey: $offBlack;
+$backgroundBlack: $black;
+$backgroundPrimary: $colorPrimary;
+
+/*
+    Exported Variables are available in JS
+*/
+// :export {
+//     // colorPrimary: $colorPrimary;
+
+// }
