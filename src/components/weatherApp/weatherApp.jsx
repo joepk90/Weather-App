@@ -2,33 +2,35 @@ import React, { Component } from 'react';
 
 import Header from '~components/header/header';
 import ForecastList from '~components/forecastList/forecastList';
-import { getWeather } from '~services/openWeatherMapServices';
+import { getForecast, getWeather } from '~services/openWeatherMapServices';
+import OpenWeatherMapUtils from '~classes/openWeatherMapUtils';
 
 import "~components/weatherApp/weatherApp.scss";
 
 class WeatherApp extends Component {
     state = {
-        currentWeatherData: {}
+        currentWeatherData: {},
+        weatherForecast: {}
     }
-
 
     async componentDidMount() {
 
-        let currentWeatherData = await getWeather();
+        const currentWeatherResponse = await getWeather();
+        const weatherForecastResponse = await getForecast();
+
+        const openWeatherMapUForecast = new OpenWeatherMapUtils(weatherForecastResponse)
 
         this.setState(
             {
-                currentWeatherData
+                currentWeatherData: currentWeatherResponse,
+                weatherForecastData: openWeatherMapUForecast.getForcastData()
             }
         );
-
-
     }
-
 
     render() {
 
-        const { currentWeatherData } = this.state;
+        const { currentWeatherData, weatherForecast } = this.state;
 
         return (
             <React.Fragment>
@@ -36,7 +38,7 @@ class WeatherApp extends Component {
                 <Header weather={currentWeatherData} />
 
                 <main>
-                    <ForecastList />
+                    <ForecastList forecast={weatherForecast} />
                 </main>
 
             </React.Fragment>
