@@ -7,6 +7,7 @@ function axiosGetData(endPoint) {
     const axiosParams = {
         params: {
             q: 'London,UK',
+            units: 'metric',
             APPID: APPID
         }
     }
