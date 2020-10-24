@@ -1,15 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Counter from '~components/common/animatedCounter/animatedCounter';
 
-class Temperature extends Component {
-    state = {}
-    render() {
-
-        const { temp } = this.props;
-
-        return (
-            <span className="temperature">{temp} &deg;</span>
-        );
-    }
+const Temperature = ({ temp }) => {
+    return (<span className="temperature"><Counter targetCount={temp} />&deg;</span>);
 }
 
 export default Temperature;
