@@ -8,9 +8,15 @@ class ProgressBar extends Component {
 
     render() {
 
+        const { progress } = this.props;
+
         return (
             <div className="progress-bar">
-                <div className="progress-bar__bar"></div>
+                <div className="progress-bar__bar">
+                    <div className="progress-bar__progress" style={{ width: `${progress}%` }}></div>
+                </div>
+
+
             </div>
         );
     }
