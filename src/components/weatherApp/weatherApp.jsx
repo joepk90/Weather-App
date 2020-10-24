@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import "~components/weatherApp/weatherApp.scss";
+
 class WeatherApp extends Component {
     state = {}
     render() {
