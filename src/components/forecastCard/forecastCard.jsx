@@ -7,25 +7,42 @@ import "~components/forecastCard/forecastCard.scss";
 
 class ForecastCard extends Component {
 
-    state = {}
+    state = {
+        temp: 0,
+        day: '',
+        weatherIconUrl: '',
+        weatherDescription: '',
+    }
+
+    componentDidMount() {
+
+        const { forecast } = this.props;
+
+        this.setState({
+            temp: forecast.getTemperatureRounded(),
+            day: forecast.getDayName(),
+            weatherIconUrl: forecast.getWeatherIconURL(),
+            weatherDescription: forecast.getWeatherDescription()
+        });
+    }
 
     render() {
 
-        const { forecast } = this.props;
+        const { temp, day, weatherIconUrl, weatherDescription } = this.state;
 
         return (
             <div className="forecast-card">
 
-                <div className="forecast-card__day h2-font-size text-uppercase">
-                    {forecast.getDayName()}
+                <div className="forecast-card__day h3-font-size text-uppercase">
+                    {day}
                 </div>
 
                 <div className="forecast-card__temp h2-font-size text-uppercase">
-                    <Temperature temp={forecast.getTemperatureRounded()} />
+                    <Temperature temp={temp} />
                 </div>
 
                 <div className="forecast-card__icon">
-                    <Image src={forecast.getWeatherIconURL()} alt={forecast.getWeatherDescription()} />
+                    <Image src={weatherIconUrl} alt={weatherDescription} />
                 </div>
 
             </div>
