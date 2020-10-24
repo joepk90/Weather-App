@@ -13,6 +13,8 @@ const applicationRefreshRate = getApplicationRefreshRate();
 
 class WeatherApp extends Component {
 
+    weatherAppIntervalID = 0;
+
     state = {
         apiRequestCount: 0,
         weatherForecastData: {},
@@ -82,6 +84,10 @@ class WeatherApp extends Component {
             pregressCount: newProgess
         });
 
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.weatherAppIntervalID);
     }
 
     async componentDidMount() {
