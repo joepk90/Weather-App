@@ -4,12 +4,19 @@ import Clock from "~components/common/clock/clock";
 import Location from "~components/location/location";
 import Temperature from "~components/temperature/temperature";
 import ProgressBar from '~components/common/progressBar/progressBar';
+import OpenWeatherMapDay from '~classes/openWeatherMapDay';
 
 import "~components/header/header.scss";
 
 class WeatherAppHeader extends Component {
     state = {}
+
     render() {
+
+        const { weather } = this.props;
+
+        const openWeatherMapDay = new OpenWeatherMapDay(weather);
+
         return (
             <header className="header">
 
@@ -21,7 +28,7 @@ class WeatherAppHeader extends Component {
 
                     <div className="header__stats">
                         <Location />
-                        <Temperature />
+                        <Temperature temp={openWeatherMapDay.getTemperature()} />
                     </div>
                 </div>
 
