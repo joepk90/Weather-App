@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { getApplicationRefreshRate } from '~utilities/settings';
 import Header from '~components/header/header';
 import ForecastList from '~components/forecastList/forecastList';
 import { getForecast, getWeather } from '~services/openWeatherMapServices';
@@ -7,7 +8,7 @@ import OpenWeatherMapUtils from '~classes/openWeatherMapUtils';
 
 import "~components/weatherApp/weatherApp.scss";
 
-const applicactionRefreshRate = 60;
+const applicationRefreshRate = getApplicationRefreshRate();
 
 class WeatherApp extends Component {
     state = {
@@ -38,7 +39,7 @@ class WeatherApp extends Component {
 
             this.updateWeatherData();
 
-        }, applicactionRefreshRate * 1000);
+        }, applicationRefreshRate * 1000);
 
     }
 
@@ -49,7 +50,7 @@ class WeatherApp extends Component {
         return (
             <React.Fragment>
 
-                <Header weather={currentWeatherData} />
+                <Header refreshRate={applicationRefreshRate} weather={currentWeatherData} />
 
                 <main>
                     <ForecastList weatherForecast={weatherForecastData} />

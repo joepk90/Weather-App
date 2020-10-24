@@ -1,6 +1,7 @@
 import axios from '~services/httpsService';
+import { getOpenWeatherApiKey } from '~utilities/settings';
 
-const APPID = process.env.REACT_APP_BASE_URL_OPEN_WEATHER_MAP_API_KEY;
+const APPID = getOpenWeatherApiKey();
 
 function axiosGetData(endPoint) {
 
