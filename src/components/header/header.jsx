@@ -28,7 +28,7 @@ class WeatherAppHeader extends Component {
 
                     <div className="header__stats">
                         <Location />
-                        <Temperature temp={openWeatherMapDay.getTemperature()} />
+                        <Temperature temp={openWeatherMapDay.getTemperatureRounded()} />
                     </div>
                 </div>
 

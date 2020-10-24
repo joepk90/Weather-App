@@ -40,7 +40,13 @@ class OpenWeatherMapDay {
             return null;
         }
 
-        return Math.round(temperatureData.temp);
+        return temperatureData.temp;
+
+    }
+
+    getTemperatureRounded() {
+
+        return Math.round(this.getTemperature());
 
     }
 
