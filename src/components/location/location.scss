@@ -1,0 +1,10 @@
+@import '~scss/base/_base.scss';
+@import '~scss/helpers/_helpers.scss';
+
+.location {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: $h4FontSize;
+}
