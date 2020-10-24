@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WeatherApp from './components/weatherApp/weatherApp';
+import WeatherApp from '~components/weatherApp/weatherApp';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
