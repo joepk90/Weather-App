@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 class OpenWeatherMapDay {
 
     constructor(data) {
@@ -26,6 +28,19 @@ class OpenWeatherMapDay {
 
         return this.data.main;
 
+    }
+
+    getWeatherData() {
+
+        if (!this.data.hasOwnProperty('weather')) {
+            return null;
+        }
+
+        if (!this.data.weather.length) {
+            return null;
+        }
+
+        return this.data.weather[0];
     }
 
     getTemperature() {
@@ -57,6 +72,62 @@ class OpenWeatherMapDay {
         }
 
         return this.data.dt;
+
+    }
+
+    getDayName() {
+
+        // TODO use moment instead of Date()
+        const dateTime = new Date(this.getDateTime() * 1000)
+
+        const dt = moment(dateTime, "YYYY-MM-DD HH:mm:ss");
+
+        return dt.format('ddd');
+
+    }
+
+
+    getWeatherIconName() {
+
+        const weatherData = this.getWeatherData();
+
+        if (weatherData === null) {
+            return null;
+        }
+
+        if (!weatherData.hasOwnProperty('icon')) {
+            return null;
+        }
+
+        return weatherData.icon;
+
+    }
+
+    getWeatherIconURL() {
+
+        const iconName = this.getWeatherIconName();
+
+        if (iconName === null) {
+            return '';
+        }
+
+        return `http://openweathermap.org/img/wn/${iconName}.png`;
+
+    }
+
+    getWeatherDescription() {
+
+        const weatherData = this.getWeatherData();
+
+        if (weatherData === null) {
+            return null;
+        }
+
+        if (!weatherData.hasOwnProperty('description')) {
+            return null;
+        }
+
+        return weatherData.description;
 
     }
 
