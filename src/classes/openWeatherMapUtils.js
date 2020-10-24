@@ -1,7 +1,10 @@
+import OpenWeatherMapDay from '~classes/openWeatherMapDay';
+import moment from 'moment';
+
 class OpenWeatherMapUtils {
 
     constructor(data) {
-        this.data = data;
+        this.data = this.getData(data);
     }
 
 
@@ -15,10 +18,64 @@ class OpenWeatherMapUtils {
 
     }
 
-    getForcastData() {
+    getForecastList() {
 
-        // TODO return array of data for the next 5 days
-        // TODO for each day find dataset with highest temperature
+        if (!this.data.hasOwnProperty('list')) {
+            return null;
+        }
+
+        return this.data.list;
+
+    }
+
+    getForecastData() {
+
+        const forcastData = this.getForecastList();
+
+        let forecastFiveDayArray = [];
+
+        let maxTemp = 0;
+        let dayCount = 0
+        let currentDay = moment().add(dayCount, 'day').endOf('day').unix();
+        const maxDays = 5
+        forcastData.forEach((forecast) => {
+
+            // limit forcast to 5 days
+            if (dayCount + 1 >= maxDays) {
+                return;
+            }
+
+            // TODO remove this mapping (will need to remove this requirement in the class as well)
+            const data = {
+                data: forecast
+            };
+
+            let dayForecast = new OpenWeatherMapDay(data);
+            let dateTime = dayForecast.getDateTime();
+            let temp = dayForecast.getTemperature();
+
+
+            // if dataset is for the next day. update dayCount and currentDay
+            if (dateTime > currentDay) {
+                dayCount++;
+                currentDay = moment().add(dayCount, 'day').endOf('day').unix();
+            }
+
+            // set data for day if not yet set
+            if (!forecastFiveDayArray[dayCount]) {
+                forecastFiveDayArray[dayCount] = dayForecast;
+                return;
+            }
+
+            if (temp > maxTemp) {
+                maxTemp = temp
+                forecastFiveDayArray[dayCount] = dayForecast;
+                return;
+            }
+
+        })
+
+        return forecastFiveDayArray;
 
     }
 

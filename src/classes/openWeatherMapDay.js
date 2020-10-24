@@ -50,6 +50,16 @@ class OpenWeatherMapDay {
 
     }
 
+    getDateTime() {
+
+        if (!this.data.hasOwnProperty('dt')) {
+            return null;
+        }
+
+        return this.data.dt;
+
+    }
+
 }
 
 
