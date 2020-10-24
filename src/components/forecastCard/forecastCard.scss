@@ -14,7 +14,8 @@
     }
 
     &__day {
-        margin: rem(15px);
+        margin: rem(15px) rem(10px) rem(15px) rem(15px);
+        min-width: rem(40px);
     }
 
     &__temp {
