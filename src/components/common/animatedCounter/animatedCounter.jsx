@@ -5,7 +5,7 @@ class Counter extends Component {
     countIntervalID = 0;
 
     state = {
-        currentCount: this.props.targetCount,
+        currentCount: 0,
     }
 
     componentDidUpdate() {
