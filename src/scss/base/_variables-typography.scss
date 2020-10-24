@@ -29,4 +29,9 @@ $fontWeightBold: 700;
     Link Colors
 */
 $linkColor: $textWhite;
-$linkColorHover: $textPrimary
+$linkColorHover: $textPrimary;
+
+/*
+    Box Shadows
+*/
+$boxShadowInner: inset 1px 1px 5px $black;

@@ -8,7 +8,7 @@
     &__time {
         display: flex;
         align-items: center;
-        box-shadow: inset 0px 0px 3px #000000;
+        box-shadow: $boxShadowInner;
         padding: rem(5px) rem(10px);
         border-radius: 3px;
 

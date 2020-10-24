@@ -8,7 +8,7 @@
         height: 15px;
         background-color: $backgroundGrey;
         border-radius: 15px;
-        box-shadow: inset 1px 1px 5px #000000;
+        box-shadow: $boxShadowInner;
     }
 
     &__progress {
