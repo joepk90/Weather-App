@@ -1,0 +1,13 @@
+@import '~scss/base/_base.scss';
+
+.header  {
+    width: 100%;
+    background-color: $backgroundGrey;
+    
+    &__stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
