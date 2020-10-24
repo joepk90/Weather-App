@@ -6,6 +6,7 @@ module.exports = function override(config) {
         "~components": path.resolve(__dirname, "src/components"),
         "~scss": path.resolve(__dirname, "src/scss"),
         "~services": path.resolve(__dirname, "src/services"),
+        "~classes": path.resolve(__dirname, "src/classes"),
     })(config)
     return config
 }
