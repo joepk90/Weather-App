@@ -7,13 +7,15 @@ import OpenWeatherMapUtils from '~classes/openWeatherMapUtils';
 
 import "~components/weatherApp/weatherApp.scss";
 
+const applicactionRefreshRate = 60;
+
 class WeatherApp extends Component {
     state = {
         currentWeatherData: {},
         weatherForecast: {}
     }
 
-    async componentDidMount() {
+    async updateWeatherData() {
 
         const currentWeatherResponse = await getWeather();
         const weatherForecastResponse = await getForecast();
@@ -26,6 +28,18 @@ class WeatherApp extends Component {
                 weatherForecastData: openWeatherMapUForecast.getForecastData()
             }
         );
+    }
+
+    async componentDidMount() {
+
+        this.updateWeatherData();
+
+        setInterval(async () => {
+
+            this.updateWeatherData();
+
+        }, applicactionRefreshRate * 1000);
+
     }
 
     render() {
