@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import "~components/common/clock/clock.scss";
 
 class Clock extends Component {
-    state = {}
+
+    clockIntervalID = 0;
+
+    state = { ...this.getTime() }
 
     appendLeadingZero(time, places) {
 
@@ -11,15 +14,21 @@ class Clock extends Component {
 
     }
 
-    setTime() {
+    getTime() {
 
         const time = new Date();
 
-        this.setState({
+        return {
             hours: this.appendLeadingZero(time.getHours(), 2),
             minutes: this.appendLeadingZero(time.getMinutes(), 2),
-            seconds: this.appendLeadingZero(time.getSeconds(), 2)
-        });
+            // seconds: this.appendLeadingZero(time.getSeconds(), 2)
+        }
+
+    }
+
+    setTime() {
+
+        this.setState({ ...this.getTime() });
 
     }
 
@@ -27,20 +36,38 @@ class Clock extends Component {
 
         this.setTime();
 
-        setInterval(async () => {
+        this.clockIntervalID = setInterval(() => {
 
             this.setTime();
 
         }, 1000);
     }
 
+    componentWillUnmount() {
+        clearInterval(this.clockIntervalID);
+    }
+
+    decoration() {
+        return (
+            <div className="clock__decor">
+                <span className="clock__decor-oval clock__decor-oval--light"></span>
+                <span className="clock__decor-oval clock__decor-oval--half"></span>
+                <span className="clock__decor-oval clock__decor-oval--full"></span>
+            </div>
+        );
+    }
+
     render() {
 
-        const { hours, minutes, seconds } = this.state;
+        const { hours, minutes } = this.state;
 
         return (
             <div className="clock">
-                <span className="clock__time">{hours}:{minutes}:{seconds} GMT</span>
+                <div className="clock__panel">
+                    {this.decoration()}
+                    <span className="clock__time">{hours}:{minutes} GMT</span>
+                    {this.decoration()}
+                </div>
             </div>
         );
     }

@@ -3,25 +3,39 @@
 
 .clock {
     display: flex;
-    font-size: $h6FontSize;
+    font-size: $fontSizeSmall;
     
-    &__time {
+    &__panel {
         display: flex;
         align-items: center;
         box-shadow: $boxShadowInner;
-        padding: rem(5px) rem(10px);
+        padding: rem(3px) rem(2px);
         border-radius: 3px;
+    }
 
-        &:before, &:after {
-            content: '';
-            height: 5px;
-            width: 3px;
-            margin: 0 rem(10px);
-            background-color:$backgroundPrimary;
-            border-radius: 50%;
-            display: inline-block;
+    &__decor {
+        margin: 0 rem(5px);
+    }
+
+    &__decor-oval {
+        height: 5px;
+        width: 3px;
+        margin: 0 rem(1px);
+        background-color:$backgroundPrimary;
+        border-radius: 50%;
+        display: inline-block;
+
+        &--light {
+            opacity: 0.2;
         }
 
+        &--half {
+            opacity: 0.5;
+        }
+
+        &--full {
+            opacity: 1;
+        }
     }
 
 }
