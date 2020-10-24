@@ -7,52 +7,110 @@ import "~components/forecastCard/forecastCard.scss";
 
 class ForecastCard extends Component {
 
-    state = {
-        temp: 0,
-        day: '',
-        weatherIconUrl: '',
-        weatherDescription: '',
-    }
-
-    componentDidMount() {
+    renderDayName() {
 
         const { forecast } = this.props;
 
-        this.setState({
-            temp: forecast.getTemperatureRounded(),
-            day: forecast.getDayName(),
-            weatherIconUrl: forecast.getWeatherIconURL(),
-            weatherDescription: forecast.getWeatherDescription()
-        });
+        const day = forecast.getDayName()
+
+        if (!day) {
+            return '';
+        }
+
+        return (
+            <div className="forecast-card__day h3-font-size text-uppercase">
+                {day}
+            </div>
+        );
+
+    }
+
+    renderTemperature() {
+
+        const { forecast } = this.props;
+
+        const temp = forecast.getTemperatureRounded();
+
+        if (!temp) {
+            return '';
+        }
+
+        return (
+            <div className="forecast-card__temp h2-font-size text-uppercase">
+                <Temperature temp={temp} />
+            </div>
+        );
+
+    }
+
+    renderWeatherIcon() {
+
+        const { forecast } = this.props;
+
+        const weatherIconUrl = forecast.getWeatherIconURL();
+        const weatherDescription = forecast.getWeatherDescription();
+
+        if (!weatherIconUrl || !weatherDescription) {
+            return '';
+        }
+
+        return (
+            <div className="forecast-card__icon">
+                <Image src={weatherIconUrl} alt={weatherDescription} />
+            </div>
+        );
+
+    }
+
+    renderWetherDescription() {
+
+        const { weatherDescription } = this.props;
+
+        if (!weatherDescription) {
+            return '';
+        }
+
+        return (
+            <p className="forecast-card__description h6-font-size text-uppercase">
+                {weatherDescription}
+            </p>
+        );
+
+    }
+
+    renderWeatherDetails() {
+
+        const { forecast } = this.props;
+
+        const weatherIconUrl = forecast.getWeatherIconURL();
+        const weatherDescription = forecast.getWeatherDescription();
+
+        if (!weatherIconUrl || !weatherDescription) {
+            return;
+        }
+
+        return (
+            <div className="forecast-card__icon-wrapper">
+
+                {this.renderWeatherIcon()}
+                {this.renderWetherDescription()}
+
+                <p className="forecast-card__description h6-font-size text-uppercase">
+                    {weatherDescription}
+                </p>
+
+            </div>
+        );
+
     }
 
     render() {
 
-        const { temp, day, weatherIconUrl, weatherDescription } = this.state;
-
         return (
             <div className="forecast-card">
-
-                <div className="forecast-card__day h3-font-size text-uppercase">
-                    {day}
-                </div>
-
-                <div className="forecast-card__temp h2-font-size text-uppercase">
-                    <Temperature temp={temp} />
-                </div>
-
-                <div className="forecast-card__icon-wrapper">
-
-                    <div className="forecast-card__icon">
-                        <Image src={weatherIconUrl} alt={weatherDescription} />
-                    </div>
-
-                    <p className="forecast-card__description h6-font-size text-uppercase">
-                        {weatherDescription}
-                    </p>
-
-                </div>
-
+                {this.renderDayName()}
+                {this.renderTemperature()}
+                {this.renderWeatherDetails()}
             </div>
         );
     }

@@ -6,8 +6,6 @@ import "~components/forecastList/forecastList.scss";
 
 class forecastList extends Component {
 
-    state = {}
-
     renderList() {
 
         const { weatherForecast } = this.props;
