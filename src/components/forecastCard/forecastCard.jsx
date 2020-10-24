@@ -41,8 +41,16 @@ class ForecastCard extends Component {
                     <Temperature temp={temp} />
                 </div>
 
-                <div className="forecast-card__icon">
-                    <Image src={weatherIconUrl} alt={weatherDescription} />
+                <div className="forecast-card__icon-wrapper">
+
+                    <div className="forecast-card__icon">
+                        <Image src={weatherIconUrl} alt={weatherDescription} />
+                    </div>
+
+                    <p className="forecast-card__description h6-font-size text-uppercase">
+                        {weatherDescription}
+                    </p>
+
                 </div>
 
             </div>
