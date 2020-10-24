@@ -1,4 +1,9 @@
 /*
+    Font Imports
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*
     Font Sizes
 */
 $baseFontSize: 16px;
@@ -16,8 +21,8 @@ $fontSizeLarge: 26px;
 /*
     Font Families
 */
-$baseFont: 'Lato', sans-serif;
-$headingFont: 'Lato', sans-serif;
+$baseFont: 'Roboto', sans-serif;
+$headingFont: 'Roboto', sans-serif;
 /*
     Font Weights
 */
