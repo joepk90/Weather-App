@@ -6,9 +6,20 @@ import "~components/forecastList/forecastList.scss";
 
 class forecastList extends Component {
 
+    shouldComponentUpdate(prevProps) {
+
+        const { apiRequestCount } = this.props;
+
+        if (apiRequestCount === prevProps.apiRequestCount) {
+            return false;
+        }
+
+        return true;
+    }
+
     renderList() {
 
-        const { weatherForecast } = this.props;
+        const { weatherForecast, apiRequestCount } = this.props;
 
         if (!weatherForecast || !weatherForecast.length) {
             return '';
@@ -16,7 +27,7 @@ class forecastList extends Component {
 
         return (
             <div className="forecast-list">
-                {weatherForecast.map((forecast) => <ForecastCard key={forecast.getDateTime()} forecast={forecast} />)}
+                {weatherForecast.map((forecast) => <ForecastCard key={forecast.getDateTime()} forecast={forecast} apiRequestCount={apiRequestCount} />)}
             </div>
         );
 

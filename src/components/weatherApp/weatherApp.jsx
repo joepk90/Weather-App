@@ -126,16 +126,22 @@ class WeatherApp extends Component {
             currentTemp,
             pregressCount,
             refreshCount,
-            weatherForecastData
+            weatherForecastData,
+            apiRequestCount
         } = this.state;
 
         return (
             <React.Fragment>
 
-                <Header temp={currentTemp} pregressCount={pregressCount} refreshCount={refreshCount} />
+                <Header
+                    temp={currentTemp}
+                    pregressCount={pregressCount}
+                    refreshCount={refreshCount}
+                    apiRequestCount={apiRequestCount}
+                />
 
                 <main>
-                    <ForecastList weatherForecast={weatherForecastData} />
+                    <ForecastList weatherForecast={weatherForecastData} apiRequestCount={apiRequestCount} />
                 </main>
 
             </React.Fragment>

@@ -7,7 +7,7 @@ import ProgressBar from '~components/common/progressBar/progressBar';
 
 import "~components/header/header.scss";
 
-const Header = ({ refreshCount, pregressCount, temp }) => {
+const Header = ({ refreshCount, pregressCount, temp, apiRequestCount }) => {
 
     return (
         <header className="header">
@@ -20,7 +20,7 @@ const Header = ({ refreshCount, pregressCount, temp }) => {
 
                 <div className="header__stats">
                     <Location />
-                    <Temperature temp={temp} />
+                    <Temperature temp={temp} apiRequestCount={apiRequestCount} />
                 </div>
             </div>
 

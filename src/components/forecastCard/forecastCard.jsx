@@ -27,7 +27,7 @@ class ForecastCard extends Component {
 
     renderTemperature() {
 
-        const { forecast } = this.props;
+        const { forecast, apiRequestCount } = this.props;
 
         const temp = forecast.getTemperatureRounded();
 
@@ -37,7 +37,7 @@ class ForecastCard extends Component {
 
         return (
             <div className="forecast-card__temp h2-font-size text-uppercase">
-                <Temperature temp={temp} />
+                <Temperature temp={temp} apiRequestCount={apiRequestCount} />
             </div>
         );
 
