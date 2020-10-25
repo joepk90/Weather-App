@@ -8,12 +8,17 @@ class Counter extends Component {
         currentCount: 0,
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
 
         let { targetCount } = this.props;
         let { currentCount } = this.state;
 
-        if (targetCount === currentCount) {
+        if (targetCount === currentCount && prevProps !== this.props) {
+
+            this.setState({ currentCount: 0 });
+            this.setCountCheckInterval();
+
+        } else if (targetCount === currentCount) {
             clearInterval(this.countIntervalID);
         }
 
@@ -43,7 +48,7 @@ class Counter extends Component {
     }
 
     componentDidMount() {
-        this.setCountCheckInterval()
+        this.setCountCheckInterval();
     }
 
     render() {
