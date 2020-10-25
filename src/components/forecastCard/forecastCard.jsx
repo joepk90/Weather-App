@@ -12,9 +12,12 @@ class ForecastCard extends Component {
         day: '',
         weatherIconUrl: '',
         weatherDescription: '',
+        shakeTempElement: false
     }
 
     componentDidMount() {
+
+        console.log('test');
 
         const { forecast } = this.props;
 
@@ -26,9 +29,32 @@ class ForecastCard extends Component {
         });
     }
 
+    didComponentUpdate(prevProps, prevState) {
+
+        console.log('test');
+        console.log(prevState);
+
+        if (prevState.temp !== this.state.temp) {
+
+            console.log('shake element');
+
+            this.setState({
+                shakeTempElement: true
+            });
+
+            setTimeout(() => {
+                this.setState({
+                    shakeTempElement: false
+                });
+            }, 3000)
+
+        }
+
+    }
+
     render() {
 
-        const { temp, day, weatherIconUrl, weatherDescription } = this.state;
+        const { temp, day, weatherIconUrl, weatherDescription, shakeTempElement } = this.state;
 
         return (
             <div className="forecast-card">
@@ -37,7 +63,7 @@ class ForecastCard extends Component {
                     {day}
                 </div>
 
-                <div className="forecast-card__temp h2-font-size text-uppercase">
+                <div className="forecast-card__temp h2-font-size text-uppercase" data-shake={shakeTempElement}>
                     <Temperature temp={temp} />
                 </div>
 

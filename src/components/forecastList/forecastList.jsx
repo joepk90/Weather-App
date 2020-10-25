@@ -12,6 +12,8 @@ class forecastList extends Component {
 
         const { weatherForecast } = this.props;
 
+        console.log(weatherForecast);
+
         if (!weatherForecast || !weatherForecast.length) {
             return '';
         }
