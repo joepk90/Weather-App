@@ -25,7 +25,7 @@ const Header = ({ refreshCount, pregressCount, temp, apiRequestCount }) => {
             </div>
 
             <div className="header__section">
-                <span className="h6-font-size">Reloading in {refreshCount}s</span>
+                <span className="font-size-small" style={{ paddingLeft: '5px' }}>Reloading in {refreshCount}s</span>
                 <ProgressBar progress={pregressCount} />
             </div>
 
