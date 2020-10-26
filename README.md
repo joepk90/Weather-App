@@ -22,3 +22,9 @@ REACT_APP_APPLICATION_REFRESH_RATE=10
 ```sh
 $ npm start
 ```
+
+
+#### Further improvements
+  - Make it possible to switch Location
+  - Improve data checks (Typescript)
+  - Unit Tests
