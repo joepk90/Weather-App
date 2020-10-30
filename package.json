@@ -44,8 +44,6 @@
     "axios": "^0.21.0",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
-    "normalize.css": "^8.0.1",
-    "react-app-rewire-alias": "^0.1.6",
-    "react-app-rewired": "^2.1.6"
+    "normalize.css": "^8.0.1"
   }
 }

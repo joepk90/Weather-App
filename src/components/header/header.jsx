@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Clock from "~components/common/clock/clock";
-import Location from "~components/location/location";
-import Temperature from "~components/temperature/temperature";
-import ProgressBar from '~components/common/progressBar/progressBar';
+import Clock from "src/components/common/clock/clock";
+import Location from "src/components/location/location";
+import Temperature from "src/components/temperature/temperature";
+import ProgressBar from 'src/components/common/progressBar/progressBar';
 
-import "~components/header/header.scss";
+import "src/components/header/header.scss";
 
 const Header = ({ refreshCount, pregressCount, temp, apiRequestCount }) => {
 

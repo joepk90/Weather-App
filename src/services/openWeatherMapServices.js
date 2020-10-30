@@ -1,5 +1,5 @@
-import axios from '~services/httpsService';
-import { getOpenWeatherApiKey } from '~utilities/settings';
+import axios from 'src/services/httpsService';
+import { getOpenWeatherApiKey } from 'src/utilities/settings';
 
 const APPID = getOpenWeatherApiKey();
 

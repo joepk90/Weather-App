@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Counter from '~components/common/animatedCounter/animatedCounter';
+import Counter from 'src/components/common/animatedCounter/animatedCounter';
 
 class Temperature extends Component {
 
