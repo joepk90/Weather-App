@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '~components/common/progressBar/progressBar.scss';
+import 'src/components/common/progressBar/progressBar.scss';
 
 const ProgressBar = ({ progress }) => {
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import ForecastCard from '~components/forecastCard/forecastCard';
+import ForecastCard from 'src/components/forecastCard/forecastCard';
 
-import "~components/forecastList/forecastList.scss";
+import "src/components/forecastList/forecastList.scss";
 
 class forecastList extends Component {
 

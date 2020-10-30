@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import { getApplicationRefreshRate } from '~utilities/settings';
-import Header from '~components/header/header';
-import ForecastList from '~components/forecastList/forecastList';
-import { getForecast, getWeather } from '~services/openWeatherMapServices';
-import OpenWeatherMapUtils from '~classes/openWeatherMapUtils';
-import OpenWeatherMapDay from '~classes/openWeatherMapDay';
+import { getApplicationRefreshRate } from 'src/utilities/settings';
+import Header from 'src/components/header/header';
+import ForecastList from 'src/components/forecastList/forecastList';
+import { getForecast, getWeather } from 'src/services/openWeatherMapServices';
+import OpenWeatherMapUtils from 'src/classes/openWeatherMapUtils';
+import OpenWeatherMapDay from 'src/classes/openWeatherMapDay';
 
-import "~components/weatherApp/weatherApp.scss";
+import "src/components/weatherApp/weatherApp.scss";
 
 const applicationRefreshRate = getApplicationRefreshRate();
 

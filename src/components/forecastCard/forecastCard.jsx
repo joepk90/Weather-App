@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Temperature from "~components/temperature/temperature";
-import Image from "~components/common/image/image";
+import Temperature from "src/components/temperature/temperature";
+import Image from "src/components/common/image/image";
 
-import "~components/forecastCard/forecastCard.scss";
+import "src/components/forecastCard/forecastCard.scss";
 
 class ForecastCard extends Component {
 

@@ -1,4 +1,4 @@
-import OpenWeatherMapDay from '~classes/openWeatherMapDay';
+import OpenWeatherMapDay from 'src/classes/openWeatherMapDay';
 import moment from 'moment';
 
 class OpenWeatherMapUtils {

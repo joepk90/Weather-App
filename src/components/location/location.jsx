@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import "~components/location/location.scss";
+import "src/components/location/location.scss";
 
 // TODO additional feature. convert to select element. allow user to select location
 
