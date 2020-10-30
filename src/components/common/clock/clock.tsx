@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import "src/components/common/clock/clock.scss";
 
-class Clock extends Component {
+export interface ClockProps { }
 
-    clockIntervalID = 0;
+export interface ClockState {
+    hours: number,
+    minutes: number,
+    seconds?: number,
+}
 
-    state = { ...this.getTime() }
+class Clock extends React.Component<ClockProps, ClockState> {
 
-    appendLeadingZero(time, places) {
+    clockIntervalID: any;
+
+    state: ClockState = { ...this.getTime() }
+
+    appendLeadingZero(time: number, places: number) {
 
         return String(time).padStart(places, '0')
 
@@ -19,9 +27,9 @@ class Clock extends Component {
         const time = new Date();
 
         return {
-            hours: this.appendLeadingZero(time.getHours(), 2),
-            minutes: this.appendLeadingZero(time.getMinutes(), 2),
-            // seconds: this.appendLeadingZero(time.getSeconds(), 2)
+            hours: parseInt(this.appendLeadingZero(time.getHours(), 2)),
+            minutes: parseInt(this.appendLeadingZero(time.getMinutes(), 2)),
+            seconds: parseInt(this.appendLeadingZero(time.getSeconds(), 2))
         }
 
     }
