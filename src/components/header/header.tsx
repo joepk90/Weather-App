@@ -7,8 +7,14 @@ import ProgressBar from 'src/components/common/progressBar/progressBar';
 
 import "src/components/header/header.scss";
 
-const Header = ({ refreshCount, pregressCount, temp, apiRequestCount }) => {
+interface HeaderProps {
+    refreshCount: number,
+    pregressCount: number,
+    temp: number,
+    apiRequestCount: number
+}
 
+const Header: React.FC<HeaderProps> = ({ refreshCount, pregressCount, temp, apiRequestCount }) => {
     return (
         <header className="header">
 
@@ -28,7 +34,6 @@ const Header = ({ refreshCount, pregressCount, temp, apiRequestCount }) => {
                 <span className="font-size-small" style={{ paddingLeft: '5px' }}>Reloading in {refreshCount}s</span>
                 <ProgressBar progress={pregressCount} />
             </div>
-
 
         </header>
     );
