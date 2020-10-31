@@ -4,7 +4,8 @@ import { getApplicationRefreshRate } from 'src/utilities/settings';
 import Header from 'src/components/header/header';
 import ForecastList from 'src/components/forecastList/forecastList';
 import { getForecast, getWeather } from 'src/services/openWeatherMapServices';
-import OpenWeatherMapUtils from 'src/classes/openWeatherMapUtils';
+import OpenWeatherMapForecast from 'src/classes/openWeatherMapForecast';
+import OpenWeatherMapWeather from 'src/classes/openWeatherMapWeather';
 import OpenWeatherMapDay from 'src/classes/openWeatherMapDay';
 
 import "src/components/weatherApp/weatherApp.scss";
@@ -17,7 +18,7 @@ class WeatherApp extends Component {
 
     state = {
         apiRequestCount: 0,
-        weatherForecastData: {},
+        weatherForecastData: [],
         refreshCount: applicationRefreshRate,
         pregressCount: 0,
         currentTemp: 0
@@ -28,10 +29,10 @@ class WeatherApp extends Component {
         const currentWeatherResponse = await getWeather();
         const weatherForecastResponse = await getForecast();
 
-        const currentWeatherData = OpenWeatherMapDay.getForecastDayData(currentWeatherResponse)
+        const currentWeatherData = OpenWeatherMapWeather.getWeatherData(currentWeatherResponse)
 
         const openWeatherMapDay = new OpenWeatherMapDay(currentWeatherData);
-        const openWeatherMapUForecast = new OpenWeatherMapUtils(weatherForecastResponse)
+        const openWeatherMapUForecast = new OpenWeatherMapForecast(weatherForecastResponse)
 
         const { apiRequestCount } = this.state;
 
@@ -39,7 +40,7 @@ class WeatherApp extends Component {
             {
                 apiRequestCount: apiRequestCount + 1,
                 currentTemp: openWeatherMapDay.getTemperatureRounded(),
-                weatherForecastData: openWeatherMapUForecast.getForecastData(),
+                weatherForecastData: openWeatherMapUForecast.getFiveDayForecastData(),
                 refreshCount: applicationRefreshRate,
                 pregressCount: 0,
             }
