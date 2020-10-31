@@ -1,7 +1,7 @@
 
 const getApplicationRefreshRate = function () {
     const refreshRate = process.env.REACT_APP_APPLICATION_REFRESH_RATE
-    return refreshRate ? refreshRate : 60;
+    return refreshRate ? parseInt(refreshRate) : 60;
 }
 
 const getOpenWeatherApiKey = function () {
