@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://api.openweathermap.org/data/2.5';
+axios.defaults.baseURL = 'https://api.openweathermap.org/data/2.5';
 
 axios.interceptors.response.use(null, error => {
 
