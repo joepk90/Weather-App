@@ -62,7 +62,7 @@ class OpenWeatherMapDay {
 
         const iconName: string = this.getWeatherIconName();
 
-        return `http://openweathermap.org/img/wn/${iconName}.png`;
+        return `https://openweathermap.org/img/wn/${iconName}.png`;
 
     }
 
