@@ -1,23 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { getApplicationRefreshRate } from 'src/utilities/settings';
 import Header from 'src/components/header/header';
 import ForecastList from 'src/components/forecastList/forecastList';
 import { getForecast, getWeather } from 'src/services/openWeatherMapServices';
-import OpenWeatherMapUtils from 'src/classes/openWeatherMapUtils';
+import OpenWeatherMapForecast from 'src/classes/openWeatherMapForecast';
+import OpenWeatherMapWeather from 'src/classes/openWeatherMapWeather';
 import OpenWeatherMapDay from 'src/classes/openWeatherMapDay';
+
+import { OpenWeatherMapCommon } from 'src/interfaces/openWeatherMapCommon';
+import { Weather } from 'src/interfaces/openWeatherMapWeather';
+import { Forecast } from 'src/interfaces/openWeatherMapForecast';
 
 import "src/components/weatherApp/weatherApp.scss";
 
 const applicationRefreshRate = getApplicationRefreshRate();
 
-class WeatherApp extends Component {
+export interface WeatherAppProps {
 
-    weatherAppIntervalID = 0;
+}
 
-    state = {
+export interface WeatherAppState {
+    apiRequestCount: number;
+    weatherForecastData: OpenWeatherMapDay[] | any[];
+    refreshCount: number;
+    pregressCount: number;
+    currentTemp: number;
+}
+
+class WeatherApp extends React.Component<WeatherAppProps, WeatherAppState> {
+
+    weatherAppIntervalID: number = 0;
+
+    state: WeatherAppState = {
         apiRequestCount: 0,
-        weatherForecastData: {},
+        weatherForecastData: [],
         refreshCount: applicationRefreshRate,
         pregressCount: 0,
         currentTemp: 0
@@ -25,13 +42,14 @@ class WeatherApp extends Component {
 
     async updateWeatherData() {
 
-        const currentWeatherResponse = await getWeather();
-        const weatherForecastResponse = await getForecast();
+        const currentWeatherResponse: Weather.Response = await getWeather();
+        const weatherForecastResponse: Forecast.Response = await getForecast();
 
-        const currentWeatherData = OpenWeatherMapDay.getForecastDayData(currentWeatherResponse)
+        // TODO the Weather Interface should work here?
+        const currentWeatherData: OpenWeatherMapCommon.Day = OpenWeatherMapWeather.getWeatherData(currentWeatherResponse)
 
         const openWeatherMapDay = new OpenWeatherMapDay(currentWeatherData);
-        const openWeatherMapUForecast = new OpenWeatherMapUtils(weatherForecastResponse)
+        const openWeatherMapUForecast = new OpenWeatherMapForecast(weatherForecastResponse)
 
         const { apiRequestCount } = this.state;
 
@@ -39,7 +57,7 @@ class WeatherApp extends Component {
             {
                 apiRequestCount: apiRequestCount + 1,
                 currentTemp: openWeatherMapDay.getTemperatureRounded(),
-                weatherForecastData: openWeatherMapUForecast.getForecastData(),
+                weatherForecastData: openWeatherMapUForecast.getFiveDayForecastData(),
                 refreshCount: applicationRefreshRate,
                 pregressCount: 0,
             }
@@ -49,7 +67,6 @@ class WeatherApp extends Component {
     setReloadingCountDown() {
 
         const { refreshCount } = this.state;
-
 
         if (refreshCount > 0) {
 
@@ -147,6 +164,8 @@ class WeatherApp extends Component {
             </React.Fragment>
         );
     }
+
 }
 
 export default WeatherApp;
+

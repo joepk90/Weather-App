@@ -1,19 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Temperature from "src/components/temperature/temperature";
 import Image from "src/components/common/image/image";
+import OpenWeatherMapDay from 'src/classes/openWeatherMapDay';
 
 import "src/components/forecastCard/forecastCard.scss";
 
-class ForecastCard extends Component {
+export interface ForecastCardProps {
+    forecast: OpenWeatherMapDay,
+    apiRequestCount: number
+}
+
+class ForecastCard extends React.Component<ForecastCardProps> {
 
     renderDayName() {
 
         const { forecast } = this.props;
 
-        const day = forecast.getDayName()
+        const day: string = forecast.getDayName()
 
-        if (!day) {
+        if (day === '') {
             return '';
         }
 
@@ -31,7 +37,7 @@ class ForecastCard extends Component {
 
         const temp = forecast.getTemperatureRounded();
 
-        if (!temp) {
+        if (!temp || !apiRequestCount) {
             return '';
         }
 
@@ -47,16 +53,19 @@ class ForecastCard extends Component {
 
         const { forecast } = this.props;
 
-        const weatherIconUrl = forecast.getWeatherIconURL();
-        const weatherDescription = forecast.getWeatherDescription();
+        const weatherIconUrl: string = forecast.getWeatherIconURL();
+        const weatherDescription: string = forecast.getWeatherDescription();
 
-        if (!weatherIconUrl || !weatherDescription) {
+        if (weatherIconUrl === '' || weatherDescription === '') {
             return '';
         }
 
         return (
             <div className="forecast-card__icon">
-                <Image src={weatherIconUrl} alt={weatherDescription} />
+                <Image
+                    src={weatherIconUrl}
+                    title={weatherDescription}
+                />
             </div>
         );
 
@@ -64,9 +73,11 @@ class ForecastCard extends Component {
 
     renderWetherDescription() {
 
-        const { weatherDescription } = this.props;
+        const { forecast } = this.props;
 
-        if (!weatherDescription) {
+        const weatherDescription: string = forecast.getWeatherDescription();
+
+        if (weatherDescription === '') {
             return '';
         }
 
@@ -82,23 +93,17 @@ class ForecastCard extends Component {
 
         const { forecast } = this.props;
 
-        const weatherIconUrl = forecast.getWeatherIconURL();
-        const weatherDescription = forecast.getWeatherDescription();
+        const weatherIconUrl: string = forecast.getWeatherIconURL();
+        const weatherDescription: string = forecast.getWeatherDescription();
 
-        if (!weatherIconUrl || !weatherDescription) {
-            return;
+        if (weatherIconUrl === '' || weatherDescription === '') {
+            return '';
         }
 
         return (
             <div className="forecast-card__icon-wrapper">
-
                 {this.renderWeatherIcon()}
                 {this.renderWetherDescription()}
-
-                <p className="forecast-card__description h6-font-size text-uppercase">
-                    {weatherDescription}
-                </p>
-
             </div>
         );
 
@@ -117,3 +122,9 @@ class ForecastCard extends Component {
 }
 
 export default ForecastCard;
+
+
+
+
+
+

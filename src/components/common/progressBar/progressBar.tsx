@@ -2,7 +2,11 @@ import React from 'react';
 
 import 'src/components/common/progressBar/progressBar.scss';
 
-const ProgressBar = ({ progress }) => {
+type ProgressBarProps = {
+    progress: number;
+};
+
+const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
 
     return (
         <div className="progress-bar">

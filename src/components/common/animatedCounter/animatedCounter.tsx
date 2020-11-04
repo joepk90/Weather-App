@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Counter extends Component {
+interface CounterState {
+    currentCount: number
+}
 
-    countIntervalID = 0;
+interface CounterProps {
+    targetCount: number
+}
 
-    state = {
+class Counter extends React.Component<CounterProps, CounterState>  {
+
+    countIntervalID: any;
+
+    state: CounterState = {
         currentCount: 0,
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps: CounterProps, prevState: CounterState) {
 
         let { targetCount } = this.props;
         let { currentCount } = this.state;

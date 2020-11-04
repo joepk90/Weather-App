@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import ForecastCard from 'src/components/forecastCard/forecastCard';
+import OpenWeatherMapDay from 'src/classes/openWeatherMapDay';
 
 import "src/components/forecastList/forecastList.scss";
 
-class forecastList extends Component {
 
-    shouldComponentUpdate(prevProps) {
+export interface ForecastListProps {
+    apiRequestCount: number;
+    weatherForecast: OpenWeatherMapDay[]
+}
+
+
+class ForecastList extends React.Component<ForecastListProps> {
+
+    shouldComponentUpdate(prevProps: ForecastListProps) {
 
         const { apiRequestCount } = this.props;
 
@@ -21,7 +29,7 @@ class forecastList extends Component {
 
         const { weatherForecast, apiRequestCount } = this.props;
 
-        if (!weatherForecast || !weatherForecast.length) {
+        if (!weatherForecast.length) {
             return '';
         }
 
@@ -30,7 +38,6 @@ class forecastList extends Component {
                 {weatherForecast.map((forecast) => <ForecastCard key={forecast.getDateTime()} forecast={forecast} apiRequestCount={apiRequestCount} />)}
             </div>
         );
-
     }
 
     render() {
@@ -41,4 +48,5 @@ class forecastList extends Component {
     }
 }
 
-export default forecastList;
+export default ForecastList;
+

@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Counter from 'src/components/common/animatedCounter/animatedCounter';
 
-class Temperature extends Component {
+export interface TemperatureProps {
+    apiRequestCount: number,
+    temp: number
+}
 
-    shouldComponentUpdate(prevProps) {
+class Temperature extends React.Component<TemperatureProps> {
+
+    shouldComponentUpdate(prevProps: TemperatureProps) {
 
         const { apiRequestCount } = this.props;
 
@@ -20,6 +25,7 @@ class Temperature extends Component {
 
         return (<span className="temperature"><Counter targetCount={temp} />&deg;</span>);
     }
+
 }
 
 export default Temperature;
