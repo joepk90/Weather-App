@@ -9,7 +9,7 @@ type ProgressBarProps = {
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
 
     return (
-        <div className="progress-bar">
+        <div id="progress-bar" className="progress-bar" style={{ display: 'block' }}>
             <div className="progress-bar__bar">
                 <div className="progress-bar__progress" style={{ width: `${progress}%` }}></div>
             </div>
